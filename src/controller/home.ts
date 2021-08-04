@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-03 09:20:07
- * @LastEditTime: 2021-08-04 09:19:46
+ * @LastEditTime: 2021-08-04 09:51:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \midway-cms\src\controller\home.ts
@@ -15,6 +15,12 @@ export class HomeController {
   @Get('/')
   async home() {
     return 'Hello Midwayjs!';
+  }
+
+  // Get请求
+  @Get('/get')
+  async getData() {
+    return 'This is a Get method!';
   }
 
   // Post请求
