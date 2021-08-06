@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-08-05 09:00:41
- * @LastEditTime: 2021-08-06 09:16:09
+ * @LastEditTime: 2021-08-06 16:50:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \midway-cms\src\controller\user.ts
  */
-import { Controller,Provide,Get, Post,Query, ALL,  Body } from "@midwayjs/decorator";
+import { Controller,Provide,Get, Post,Query, ALL,  Body,Param } from "@midwayjs/decorator";
 
 @Provide()
 @Controller('/api/demo')
@@ -41,6 +41,7 @@ export class DemoController{
         }
     }
 
+    // 获取单个 body 参数
     @Post('/body')
     async getDemoBody(@Body()bid){
         // 注意：客户端的Body类型：type: application/x-www-form-urlencoded
@@ -49,6 +50,18 @@ export class DemoController{
             success: true,
             message:'查询成功', 
             data:{ bid } // 返回bid
+        }
+    }
+
+    // 获取 param 参数
+    @Get('/param/:uid')
+    async getDemoParam(@Param()uid){
+       // uid 从路由参数中获取
+        return {
+            code: 1000,
+            success: true,
+            message:'查询成功', 
+            data:{ uid } // 返回bid
         }
     }
 }
