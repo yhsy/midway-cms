@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-08-05 09:00:41
- * @LastEditTime: 2021-08-06 17:09:40
+ * @LastEditTime: 2021-08-06 17:31:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \midway-cms\src\controller\user.ts
  */
-import { Controller,Provide,Get, Post,Query, ALL,  Body,Param, RequestPath, RequestIP } from "@midwayjs/decorator";
+import { Controller,Provide,Get, Post,Query, ALL,  Body,Param, RequestPath, RequestIP,HttpCode } from "@midwayjs/decorator";
 
 @Provide()
 @Controller('/api/demo')
@@ -90,4 +90,17 @@ export class DemoController{
              data:{ ip } // 返回ip
          }
      }
+
+    @Get('/HttpCode')
+    // 修改状态码为201
+    @HttpCode(201)
+    async getHttpCode() {
+        return "Hello HttpCode 201!";
+        //    return {
+        //         code: 201,
+        //         success: true,
+        //         message:'Hello HttpCode 201!', 
+        //         data:{}
+        //     }
+    }
 }
