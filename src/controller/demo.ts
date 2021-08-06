@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-08-05 09:00:41
- * @LastEditTime: 2021-08-06 16:50:34
+ * @LastEditTime: 2021-08-06 16:58:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \midway-cms\src\controller\user.ts
  */
-import { Controller,Provide,Get, Post,Query, ALL,  Body,Param } from "@midwayjs/decorator";
+import { Controller,Provide,Get, Post,Query, ALL,  Body,Param, RequestPath, } from "@midwayjs/decorator";
 
 @Provide()
 @Controller('/api/demo')
@@ -61,7 +61,19 @@ export class DemoController{
             code: 1000,
             success: true,
             message:'查询成功', 
-            data:{ uid } // 返回bid
+            data:{ uid } // 返回uid
         }
     }
+
+    // 获取path
+    @Post('/path')
+    async getDemoPath(@RequestPath()path){
+        // 获取接口路径地址
+         return {
+             code: 1000,
+             success: true,
+             message:'查询成功', 
+             data:{ path } // 返回path
+         }
+     }
 }
