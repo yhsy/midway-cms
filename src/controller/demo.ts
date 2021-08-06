@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-08-05 09:00:41
- * @LastEditTime: 2021-08-06 16:58:21
+ * @LastEditTime: 2021-08-06 17:09:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \midway-cms\src\controller\user.ts
  */
-import { Controller,Provide,Get, Post,Query, ALL,  Body,Param, RequestPath, } from "@midwayjs/decorator";
+import { Controller,Provide,Get, Post,Query, ALL,  Body,Param, RequestPath, RequestIP } from "@midwayjs/decorator";
 
 @Provide()
 @Controller('/api/demo')
@@ -31,6 +31,7 @@ export class DemoController{
         }
     }
 
+    // 获取query对象
     @Get('/info')
     async getDemoQueryInfo(@Query(ALL) queryObject: object){
         return {
@@ -74,6 +75,19 @@ export class DemoController{
              success: true,
              message:'查询成功', 
              data:{ path } // 返回path
+         }
+     }
+
+    // 获取ip地址
+    @Post('/ip')
+    async getDemoIp(@RequestIP()ip){
+        // console.log(`ip:${ip}`)
+        // 获取ip地址
+         return {
+             code: 1000,
+             success: true,
+             message:'查询成功', 
+             data:{ ip } // 返回ip
          }
      }
 }
