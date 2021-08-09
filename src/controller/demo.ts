@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-08-05 09:00:41
- * @LastEditTime: 2021-08-09 09:21:21
+ * @LastEditTime: 2021-08-09 09:23:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \midway-cms\src\controller\user.ts
  */
-import { Controller,Provide,Get, Post,Query, ALL,  Body,Param, RequestPath, RequestIP,HttpCode,SetHeader, Redirect  } from "@midwayjs/decorator";
+import { Controller,Provide,Get, Post,Query, ALL,  Body,Param, RequestPath, RequestIP,HttpCode,SetHeader, Redirect,ContentType  } from "@midwayjs/decorator";
 
 @Provide()
 @Controller('/api/demo')
@@ -119,5 +119,13 @@ export class DemoController{
     @Redirect('/params/abc')
     async getAbc(){
         return 'Hello Redirect'
+    }
+
+
+    @Get('/html')
+    // 修改响应类型
+    @ContentType('html')
+    async getHtml(){
+        return '<body>hello world</body>';
     }
 }
