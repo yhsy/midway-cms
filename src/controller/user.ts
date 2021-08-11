@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-10 08:46:09
- * @LastEditTime: 2021-08-11 09:47:32
+ * @LastEditTime: 2021-08-11 17:14:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \midway-cms\src\controller\user.ts
@@ -33,11 +33,13 @@ export class UserController {
     
     @Post('/add')
     async addUser(@Body(ALL) obj){
-        console.log(`obj:${JSON.stringify(obj)}`)
-        return { 
-            success: true, 
-            message: 'OK', 
-            data: obj
-        };
+        // console.log(`obj:${JSON.stringify(obj)}`)
+        /*
+            1.获取请求参数
+            2.校验参数,通过(下一步),未通过(返回错误提示)
+            3.通过Service层把数据插入到数据库,插入成功(返回正确提示),插入失败(返回错误提示)
+        */ 
+        const addUser = await this.userService.addUser(obj);
+        return addUser;
     }
 }
